@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 COPY --from=ghcr.io/astral-sh/uv:0.12.23 /uv /usr/local/bin/uv
 
@@ -13,6 +13,10 @@ ENV PYTHONDONTWRITEBYTECODE=true
 WORKDIR /workdir
 
 COPY build-netrc.sh notebook-entrypoint.sh ./
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libexpat1 \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir ./${sub_dir}
 COPY ${sub_dir}/requirements.txt ./${sub_dir}

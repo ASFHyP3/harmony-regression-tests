@@ -34,7 +34,7 @@ on:
       docker-image-tag:
         required: false
         type: string
-        default: 'latest'
+        default: "latest"
 
   workflow_dispatch:
     inputs:
@@ -88,7 +88,7 @@ on:
         description: "Optional Docker image tag to use for the tests"
         required: false
         type: string
-        default: 'latest'
+        default: "latest"
 
   repository_dispatch:
     types:
@@ -128,7 +128,7 @@ on:
       docker-image-tag:
         required: false
         type: string
-        default: 'latest'
+        default: "latest"
 
 jobs:
   base:
